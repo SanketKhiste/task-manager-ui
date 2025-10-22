@@ -36,3 +36,96 @@
     transform: rotate(360deg);
   }
 }
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+}
+
+.header {
+  background: #007bff;
+  color: #fff;
+  padding: 1rem;
+  height: 25px;
+  text-align: center;
+}
+
+.header h3 {
+  margin: 0;
+  font-size: 20px;
+}
+
+
+.main-content {
+  max-width: 800px;
+  margin: 1rem auto;
+  padding: 1rem;
+}
+
+.task-form {
+  margin-bottom: 1rem;
+}
+
+.task-input {
+  width: 70%;
+  padding: 0.5rem;
+}
+
+.add-btn {
+  padding: 0.5rem 1rem;
+  background: #3498db;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.task-list {
+  list-style: none;
+  padding: 0;
+}
+
+.task-item {
+  background: #f8f9fa;
+  margin-bottom: 0.5rem;
+  padding: 0.75rem;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 4px;
+}
+
+.footer {
+  background: #007bff;
+  color: #fff;
+  text-align: center;
+  padding: 1rem;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+}
+
+.task-table th, .task-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+.task-table th {
+  background-color: #f2f2f2;
+}
+
+.header {
+  background: #007bff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  border-bottom: 1px solid #ddd;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+}
+
+.user-name {
+  font-weight: bold;
+  color: #333;
+}
