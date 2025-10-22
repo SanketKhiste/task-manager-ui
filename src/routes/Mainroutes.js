@@ -1,5 +1,3 @@
-// filepath: f:\Newproject\task-manager-ui\src\routes\Mainroutes.js
-// ...existing code...
 import React from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import SignIn from '../components/SignIn';
@@ -13,7 +11,6 @@ const Mainroutes = () => {
       <Route path="/signin" element={<SignIn />} />
       <Route path="/SignUpForm" element={<SignUpForm />} />
       <Route path="/tasklist" element={<TaskList />} />
-      {/* add other routes here */}
     </Routes>
   );
 };

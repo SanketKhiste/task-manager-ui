@@ -32,7 +32,7 @@ const TaskForm = ({ onClose, onTaskAddedOrUpdated, task }) => {
     });
   };
 
-const handleAddTask = () => {
+const AddTask = () => {
   const data = {
     title: formData.title,
     description: formData.description,
@@ -53,7 +53,7 @@ const handleAddTask = () => {
     });
 };
 
-const handleUpdateTask = () => {
+const UpdateTask = () => {
    
   const data = {
     id: task?.id,
@@ -145,7 +145,7 @@ const handleUpdateTask = () => {
         </div>
 
         <div style={{ display: "flex", gap: "10px" }}>
-        <button onClick={() => task ? handleUpdateTask() : handleAddTask()}
+        <button onClick={() => task ? UpdateTask() : AddTask()}
         style={{
             backgroundColor: task ? "orange" : "green",
             color: "white",
