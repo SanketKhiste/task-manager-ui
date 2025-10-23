@@ -1,8 +1,9 @@
-import React, { useState,useContext  } from 'react';
+import React, { useState, useContext } from 'react';
 import '../style/SignIn.css';
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../context/UserContext";
+
 const APIBaseUrl = process.env.REACT_APP_APIBASEURL;
 
 const SignIn = () => {
@@ -10,22 +11,24 @@ const SignIn = () => {
     email: "",
     password: "",
   });
+
+  const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
   const { setUser } = useContext(UserContext);
-  
 
   const handleChange = (e) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value
     });
+    setErrorMessage(""); // Clear error on input change
   };
 
   const Login = (e) => {
     e.preventDefault();
 
     if (!formData.email || !formData.password) {
-      alert("Please enter both email and password");
+      setErrorMessage("Please enter both email and password");
       return;
     }
 
@@ -36,14 +39,18 @@ const SignIn = () => {
 
     axios.post(`${APIBaseUrl}/Login/UserLogin`, data)
       .then((res) => {
-         
         console.log("Login Details:", res.data);
         setUser(res.data);
         sessionStorage.setItem("user", JSON.stringify(res.data));
         navigate("/TaskList");
       })
       .catch((err) => {
-        console.error("Error logging in:", err.message);
+        if (err.response && err.response.status === 401) {
+          setErrorMessage(err.response.data.message || "Invalid email or password");
+        } else {
+          setErrorMessage("Something went wrong. Please try again.");
+        }
+        console.error("Error logging in:", err);
       });
   };
 
@@ -80,6 +87,10 @@ const SignIn = () => {
           <button type="button" className="button" onClick={Login}>
             Log in
           </button>
+
+          {errorMessage && (
+            <p className="errorText">{errorMessage}</p>
+          )}
         </div>
 
         <p className="signupText">

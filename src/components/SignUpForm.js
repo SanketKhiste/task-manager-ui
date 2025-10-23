@@ -43,7 +43,6 @@ const SignUpForm = () => {
         console.log("Register:", res.data);
         setSuccessMessage("Registration successful!");
 
-        // Clear the form
         setFormData({
           name: '',
           email: '',
