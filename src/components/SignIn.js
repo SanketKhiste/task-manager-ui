@@ -21,7 +21,7 @@ const SignIn = () => {
       ...formData,
       [e.target.name]: e.target.value
     });
-    setErrorMessage(""); // Clear error on input change
+    setErrorMessage("");
   };
 
   const Login = (e) => {
