@@ -1,6 +1,8 @@
 import React, { useContext, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { UserContext } from "../context/UserContext";
+import '../style/Header.css';
+
 
 const Header = () => {
   const { user, setUser } = useContext(UserContext);
@@ -22,6 +24,11 @@ const Header = () => {
   return (
     <header className="header">
       <h3 className="logo">Task Manager</h3>
+          {/* Dashboard menu */}
+          {user && (<nav className="dashboard-menu">
+            <Link to="/UsersDashboard" className="menu-link">Dashboard</Link>
+            {/* Add more links if needed */}
+          </nav>)}
 
       {user && (
         <div className="user-info">
