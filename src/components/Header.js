@@ -24,11 +24,9 @@ const Header = () => {
   return (
     <header className="header">
       <h3 className="logo">Task Manager</h3>
-          {/* Dashboard menu */}
           {user && (<nav className="dashboard-menu">
             <Link to="/UsersDashboard" className="menu-link">Dashboard</Link>
             <Link to="/TaskList" className="menu-link">TaskList</Link>
-            {/* Add more links if needed */}
           </nav>)}
 
       {user && (
