@@ -1,0 +1,44 @@
+
+trigger:
+  branches:
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'drop'
+    publishLocation: 'Container'
+    include:
+      - none
+
+pool:
+  vmImage: 'windows-latest'
+
+steps:
+# Checkout source code
+- checkout: self
+
+# Install .NET SDK
+- task: UseDotNet@2
+  inputs:
+    packageType: 'sdk'
+    version: '7.x'
+  displayName: 'Install .NET SDK'
+
+# Restore dependencies
+- script: dotnet restore
+  displayName: 'Restore NuGet packages'
+
+# Build the project
+- script: dotnet build --configuration Release
+  displayName: 'Build the project'
+
+# Run tests
+- script: dotnet test --configuration Release --no-build --verbosity normal
+  displayName: 'Run unit tests'
+
+# Publish build artifacts
+- task: PublishBuildArtifacts@1
+  inputs:
+    pathToPublish: '$(Build.ArtifactStagingDirectory)'
+    artifactName: 'drop'
+    publishLocation: 'Container'
+  displayName: 'Publish build artifacts'
